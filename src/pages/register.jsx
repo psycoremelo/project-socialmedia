@@ -2,9 +2,22 @@ import { Link } from "react-router-dom";
 import Button from "../components/button";
 import Input from "../components/input";
 import { useFormik } from "formik";
-import validate from "../validation/register";
+import validate from "../validation/register.js";
 
 export default function Register() {
+        const formik = useFormik({
+          initialValues: {
+            username: "",
+            email:"",
+            password: ""
+          },
+          validate: validate,
+          validateOnBlur: false,
+          validateOnChange: false,
+          onSubmit: (values) => {
+              console.log(values);
+          }
+        });
   return (
     <main className="size-ful bg-gray-800 flex items-center justify-center relative">
       <img

@@ -23,7 +23,7 @@ export default function Login() {
         success: (res) => {
           console.log(res);
           localStorage.setItem("token", res.data.token);
-          navigate("/",( replace: true));
+          navigate("/",{ replace: true});
           return "Login success!";
         },
         error: "Login!"
