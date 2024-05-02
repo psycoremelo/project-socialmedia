@@ -1,23 +1,36 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/button";
 import Input from "../components/input";
 import { useFormik } from "formik";
 import validate from "../validation/register.js";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function Register() {
-        const formik = useFormik({
-          initialValues: {
-            username: "",
-            email:"",
-            password: ""
-          },
-          validate: validate,
-          validateOnBlur: false,
-          validateOnChange: false,
-          onSubmit: (values) => {
-              console.log(values);
-          }
-        });
+  const navigate = useNavigate();
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      email: "",
+      password: "",
+      cpassword: "",
+    },
+    validate: validate,
+    validateOnBlur: false,
+    validateOnChange: false,
+    onSubmit: (values) => {
+      let { cpassword, ...rest } = values;
+      let res = axios.post("/api/register", rest);
+      toast.promise(res, {
+        loading: "Registering...",
+        success: () => {
+          navigate("/login", { replace: true });
+          return "Registeration successful";
+        },
+        error: "Registeration failed",
+      });
+    },
+  });
   return (
     <main className="size-ful bg-gray-800 flex items-center justify-center relative">
       <img
@@ -36,7 +49,7 @@ export default function Register() {
           <Input
             type="text"
             placeholder="Username"
-            {...formik.getfeildProps("email")}
+            {...formik.getFieldProps("username")}
           />
           <article className="text-red-500 text-sm">
             {formik.errors.username}
@@ -44,7 +57,7 @@ export default function Register() {
           <Input
             type="email"
             placeholder="email"
-            {...formik.getfeildProps("email")}
+            {...formik.getFieldProps("email")}
           />
           <article className="text-red-500 text-sm">
             {formik.errors.email}
@@ -52,7 +65,12 @@ export default function Register() {
           <Input
             type="password"
             placeholder="password"
-            {...formik.getfeildProps("password")}
+            {...formik.getFieldProps("password")}
+          />
+          <Input
+            type="password"
+            placeholder="confirm password"
+            {...formik.getFieldProps("cpassword")}
           />
           <article className="text-red-500 text-sm">
             {formik.errors.password}

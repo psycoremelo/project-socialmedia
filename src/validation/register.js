@@ -6,6 +6,8 @@ function Validate(values) {
     errors.email = "Invalid email";
   }else if(!/[\w\W]{8,24}/.test(values.password)) {
     errors.password = "Invalid password";
+  }else if (values.password !== values.cpassword) {
+    errors.password = "password do not match";
   }
   return errors;
 }
