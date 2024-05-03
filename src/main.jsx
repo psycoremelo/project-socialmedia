@@ -6,7 +6,7 @@ import axios from 'axios'
 
 axios.defaults.baseURL = location.href;
 if(import.meta.env.DEV) {
-  axios.defaults.baseURL = "http://lacalhost:3000";
+  axios.defaults.baseURL = "http://localhost:3000";
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />)
