@@ -2,15 +2,15 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import userModel from "../model/user.model.js";
 
-const { sign } = jwt;  
+const { sign } = jwt;
 
 export async function register(req, res) {
   try {
     let { username, email, password } = req.body;
     if (username.length < 4) return res.status(400).json({ msg: "Username is too small" });
     if (!/[a-z0-9\.]+@[a-z0-9]+\.[a-z]{2,6}/.test(email)) return res.status(400).json({ msg: "Invalid email" });
-    if (password.length < 4) return res.status(400).json({ msg: "Password is too small" });
-    let user = userModel.findOne({ $or: [{ username }, { email }] });
+    if (password.length < 4) return res.status(400).json({ msg: "Password not big enough" });
+    let user = userModel.findOne({ $or: [{ username }, { email }]});
     if (user && user.username == username) return res.status(400).json({ msg: "Email already exists" });
     if (user && user.email == email) return res.status(400).json({ msg: "Email already exist" });
     let hashedPassword = await bcrypt.hash(password, 10);
