@@ -1,4 +1,4 @@
-export default function Posts() {
+export default function posts() {
   let posts = new Array(10).fill("Post");
   return (
     <section className="h-full w-full lg:w[40rem]">
