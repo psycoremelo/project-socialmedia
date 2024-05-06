@@ -1,6 +1,6 @@
 export default function NavBar({ setPage }) {
   return (
-    <main className="w-full h-16 lg:w-16 shadow-md shadow-black fixed buttom-0 lg:left-0 bg-white">
+    <main className="w-full h-16 lg:w-16 lg:h-full shadow-md shadow-black fixed bottom-0 left-0 bg-white z-10">
       <div className="flex flex-row lg:flex-col w-full h-full lg:w-full lg:h-1/2 items-center justify-evenly">
         <section onClick={() => setPage("home")}>
           <svg

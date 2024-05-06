@@ -7,7 +7,7 @@ export default function Profile() {
       <article className="h-40 w-full p-4 flex">
         <div className="h-full aspect-square p-2 relative">
           <div className="h-full w-full rounded-full bg-gray-400"></div>
-          <div className="size-6 rounded-full bg-blue-600 flex items-center justify-center text-lg text-white absolute right-4 buttom-4"></div>
+          <div className="size-6 rounded-full bg-blue-500 flex items-center justify-center text-lg text-white absolute right-4 bottom-4">+</div>
         </div>
         <div className="h-full flex-grow flex">
           <section className="h-full flex-grow flex items-center justify-center flex-col">

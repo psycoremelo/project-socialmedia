@@ -16,7 +16,7 @@ export default function Login() {
     Validate: Validate,
     ValidateOnBlur: false,
     ValidateOnChange: false,
-    onsubmit: (values) => {
+    onSubmit: (values) => {
       let res = axios.post("/api/login", values);
       toast.promise(res, {
         loading: "Logging in...",
