@@ -1,17 +1,35 @@
 export default function EditProfile() {
   return(
-    <main className="h=full w-full ">
+    <main className="flex justify-center">
+    <main className="h=full w-full lg:w-[40rem]">
       <section className="flex justify-between ">
-        <button>Cancel</button>
-        <p>Edit profile</p>
-        <button>Done</button>
+        <button className="">Cancel</button>
+        <p className="font-bold">Edit profile</p>
+        <button className="text-blue-400">Done</button>
       </section>
-      <section className="h-full w-full p-4 flex justify-center">
+      <section className="h-full w-full p-10 flex justify-center">
         <div className="h-full aspect-square p-2 relative"> 
         <div className="h-full w-full rounded-full bg-gray-500"></div>
-        <p className="font-bold text-blue-400 pt-10">Change profile photo</p>
+        <button className=" text-blue-400">Change profie photo</button>
         </div>
       </section>
+      <form>
+        <label htmlFor="">Name </label>
+        <input type="text" />
+        <br />
+        <label htmlFor="">Username </label>
+        <input type="text" />
+        <br />
+        <label htmlFor="">pronounce </label>
+        <input type="text" />
+        <br />
+        <label htmlFor="">Bio </label>
+        <input type="text" />
+        <br />
+        <label htmlFor="">links </label>
+        <input type="link" />
+      </form>
+    </main>
     </main>
   )
 }
